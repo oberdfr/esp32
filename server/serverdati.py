@@ -71,6 +71,7 @@ def add():
     # id = id + 100
     # scrivi i dati su un file
     with open("dati.csv", "a") as write_obj:
+        write_obj.writelines ("")
         linea = "100" + "," + get_aula +  "," + dataMisurazione + ","  + oraMisurazione +  "," + get_valore + "\n"
         write_obj.writelines (linea)
     #     csvwriter = csv.writer(write_obj)
