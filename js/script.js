@@ -1,71 +1,5 @@
 const body = document.getElementById('body')
 let firstTime = 0
-/*onst misure = [
-    {
-        id : 100,
-        aula : 'MM2',
-        giorno : '2024-01-23',
-        ora : '10:25',
-        valore : 20
-    },
-    {
-        id : 200,
-        aula : 'MM3',
-        giorno : '2024-01-23',
-        ora : '10:25',
-        valore : 21
-    },
-    {
-        id : 300,
-        aula : 'MM1',
-        giorno : '2024-01-23',
-        ora : '10:25',
-        valore : 19
-    },
-    {
-        id : 400,
-        aula : 'MM2',
-        giorno : '2024-01-23',
-        ora : '10:25',
-        valore : 1
-    },
-    {
-        id : 500,
-        aula : 'MM3',
-        giorno : '2024-01-24',
-        ora : '14:25',
-        valore : 2
-    },
-    {
-        id : 600,
-        aula : 'MM1',
-        giorno : '2024-01-24',
-        ora : '15:35',
-        valore : 15
-    },
-    {
-        id : 700,
-        aula : 'MM2',
-        giorno : '2024-01-24',
-        ora : '16:50',
-        valore : 12
-    },
-    {
-        id : 800,
-        aula : 'MM3',
-        giorno : '2024-01-25',
-        ora : '17:10',
-        valore : 22
-    },
-    {
-        id : 900,
-        aula : 'MM1',
-        giorno : '2024-01-25',
-        ora : '10:25',
-        valore : 15
-    },
-    
-]*/
 
 function converti(misurecurr){
     let  misure_nuovo = []
@@ -200,7 +134,7 @@ bottoneData.addEventListener('click', getDateValue())
 //input date control su w3school
 
 function fetchElenco() {
-    let url = "http://10.0.3.58:5000";
+    let url = "http://10.0.3.146:5000";
     fetch(url)
     .then(response => response.json())
     .then(data =>  {

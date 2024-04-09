@@ -1,13 +1,17 @@
 from flask import Flask,  make_response, request
 import json 
 import csv
+from datetime import datetime
 
 app = Flask(__name__)
 
 lista_dati = []
 
+
+
 def scan():
     with open("dati.csv", "r") as read_obj:
+        lista_dati.clear()
         csvreader = csv.reader(read_obj)
         for row in csvreader :
             id = row[0]
@@ -41,17 +45,33 @@ def index():
     return response 
 
 
+
+ # bool firstTime = false
+
 @app.route("/add")
 def add():
+    #if firstTime:
+        #with open("dati.csv", "r") as read_obj:
+        #csvreader = csv.reader(read_obj)
+        #for row in csvreader :
+            #id = row[0]
+        
     response = app.response_class(
     response=0,
     )
     # recupero i dati
     get_aula = request.args.get("aula")
     get_valore = request.args.get("valore")
+    formatData = '%Y-%m-%d'  # YYYY-MM-DD
+    formatOra = "%H:%M"
+    dateTimeMisurazione = datetime.now()
+    dataMisurazione = dateTimeMisurazione.strftime(formatData)
+    oraMisurazione = dateTimeMisurazione.strftime(formatOra)
+    id = 40
+    # id = id + 100
     # scrivi i dati su un file
     with open("dati.csv", "a") as write_obj:
-        linea = "200," + get_aula +  "," + "febbraio" + ","  + "10:55" +  "," + get_valore + "\n"
+        linea = "100" + "," + get_aula +  "," + dataMisurazione + ","  + oraMisurazione +  "," + get_valore + "\n"
         write_obj.writelines (linea)
     #     csvwriter = csv.writer(write_obj)
     #     test_add_dict = {
@@ -63,4 +83,5 @@ def add():
     #     }
     #     csvwriter.writerow(test_add_dict)
     response.headers.add("Access-Control-Allow-Origin", "*")
+     # fistTime = true
     return response 
