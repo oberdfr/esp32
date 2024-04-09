@@ -8,9 +8,9 @@ function converti(misurecurr){
         let nuovamisura = {
             id: misura.id,
             aula: misura.aula,
-            giorno: new Date(misura.giorno),
+            giorno: new Date(misura.giorno).toDateString(),
             ora: misura.ora,
-            valore: misura.valore,
+            valore: misura.valore + "°C",
         }
 
         misure_nuovo.push(nuovamisura);
@@ -134,7 +134,7 @@ bottoneData.addEventListener('click', getDateValue())
 //input date control su w3school
 
 function fetchElenco() {
-    let url = "http://10.0.3.146:5000";
+    let url = "http://10.0.3.94:5000";
     fetch(url)
     .then(response => response.json())
     .then(data =>  {
