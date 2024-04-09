@@ -134,7 +134,7 @@ bottoneData.addEventListener('click', getDateValue())
 //input date control su w3school
 
 function fetchElenco() {
-    let url = "http://10.0.3.94:5000";
+    let url = "http://10.25.0.15:5050";
     fetch(url)
     .then(response => response.json())
     .then(data =>  {
