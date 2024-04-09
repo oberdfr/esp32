@@ -7,7 +7,13 @@ app = Flask(__name__)
 
 lista_dati = []
 
-
+def getLatestId():
+    with open("dati.csv", "r") as read_obj:
+        csvreader = csv.reader(read_obj)
+        id = 100
+        for row in csvreader :
+            id = row[0]
+    return id
 
 def scan():
     with open("dati.csv", "r") as read_obj:
@@ -67,12 +73,13 @@ def add():
     dateTimeMisurazione = datetime.now()
     dataMisurazione = dateTimeMisurazione.strftime(formatData)
     oraMisurazione = dateTimeMisurazione.strftime(formatOra)
-    id = 40
-    # id = id + 100
+    id = getLatestId()
+    id = int(id)
+    id+=100
     # scrivi i dati su un file
     with open("dati.csv", "a") as write_obj:
         write_obj.writelines ("")
-        linea = "100" + "," + get_aula +  "," + dataMisurazione + ","  + oraMisurazione +  "," + get_valore + "\n"
+        linea = str(id) + "," + get_aula +  "," + dataMisurazione + ","  + oraMisurazione +  "," + get_valore + "\n"
         write_obj.writelines (linea)
     #     csvwriter = csv.writer(write_obj)
     #     test_add_dict = {
