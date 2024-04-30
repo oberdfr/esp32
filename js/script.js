@@ -32,8 +32,11 @@ function tabella(misurecurr){
     let i = misurecurr.length 
 
     let table = document.createElement('table')
-    table.setAttribute('id','tabella')
-
+    table.setAttribute('id','temperatureTable')
+    table.classList.add("table");
+    table.classList.add("table-striped");
+    
+    let tableheader = document.createElement('thead')
     let tr = document.createElement('tr')
 
     let txt = 0
@@ -72,11 +75,12 @@ function tabella(misurecurr){
             td.setAttribute('class','headertab')
 
             td.append(txtinit)
-            tr.append(td) 
-            table.append(tr)
-            
-            
+            tr.append(td)
+            tableheader.append(tr)
+            table.append(tableheader)
         }
+
+        let tablebody = document.createElement('tbody')
         
         for(let u=0; u<i; u++){ 
             tr = document.createElement('tr')
@@ -109,10 +113,10 @@ function tabella(misurecurr){
                 let td = document.createElement('td')
                 td.append(txt)
                 tr.append(td)
-            
+                tablebody.append(tr)
             }
-            table.append(tr)
         }
+        table.append(tablebody)
          
     return table
 }
@@ -134,7 +138,7 @@ bottoneData.addEventListener('click', getDateValue())
 //input date control su w3school
 
 function fetchElenco() {
-    let url = "http://10.25.0.15:5050";
+    let url = "http://127.0.0.1:5000";
     fetch(url)
     .then(response => response.json())
     .then(data =>  {
@@ -142,7 +146,6 @@ function fetchElenco() {
         // ShowTabella
             let t1 = tabella(converti(misurazioni))
             div.append(t1)
-            body.append(div)
         console.log(misurazioni)
       });
   }
